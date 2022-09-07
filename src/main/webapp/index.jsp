@@ -5,9 +5,15 @@
         <title>JSP - Hello World</title>
     </head>
     <body>
-        <h1><%= "Hello World!" %>
-        </h1>
-        <br/>
-        <a href="hello-servlet">Hello Servlet</a>
+    <form action="/action_page.php">
+        <h1>Welcome to new social network - Anagram!</h1>
+        <h3>Please Log in</h3>
+        <label for="email">Enter your username or email:</label><br>
+        <input type="text" id="email" name="email" required><br><br>
+        <label for="password">Enter your password:</label><br>
+        <input type="text" id="password" name="password" required><br><br>
+        <input type="Submit" value="Log in">
+    </form>
+    <a href="register.jsp"> Register </a>
     </body>
 </html>
