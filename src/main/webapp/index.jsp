@@ -12,8 +12,8 @@
         <input type="text" id="email" name="email" required><br><br>
         <label for="password">Enter your password:</label><br>
         <input type="text" id="password" name="password" required><br><br>
-        <input type="Submit" value="Log in">
+        <input type="Submit" value="Log in"><br><br>
     </form>
-    <a href="register.jsp"> Register </a>
+    <a href="registrationPage.jsp"> Register </a>
     </body>
 </html>
