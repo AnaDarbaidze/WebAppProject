@@ -2,16 +2,17 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>JSP - Hello World</title>
+        <title>Log in page</title>
+<%--        <link rel="stylesheet" type="text/css" href="style.css" />--%>
+<%--        class="login-form"--%>
     </head>
     <body>
     <form action="/action_page.php">
-        <h1>Welcome to new social network - Anagram!</h1>
-        <h3>Please Log in</h3>
+        <h1>Login</h1>
         <label for="email">Enter your username or email:</label><br>
         <input type="text" id="email" name="email" required><br><br>
         <label for="password">Enter your password:</label><br>
-        <input type="text" id="password" name="password" required><br><br>
+        <input type="password" id="password" name="password" required><br><br>
         <input type="Submit" value="Log in"><br><br>
     </form>
     <a href="registrationPage.jsp"> Register </a>

@@ -2,17 +2,17 @@
   Created by IntelliJ IDEA.
   User: PC
   Date: 9/7/2022
-  Time: 12:04 PM
+  Time: 12:42 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Registration page</title>
+    <title>Password Error</title>
 </head>
     <body>
+    <h1> Your Password and Repeat Password does not match </h1>
     <form action="registration-servlet" >
-      <h3>Registration Page</h3><br>
       <label for="username">Enter your username or email:</label><br>
       <input type="text" id="username" name="username" placeholder="Username/Email" required ><br><br>
       <label for="firstname">Enter your name:</label><br>
@@ -25,9 +25,7 @@
       <input type="password" id="password" name="password" placeholder="Password" required><br><br>
       <label for="repeat-password">Please, confirm password:</label><br>
       <input type="password" id="repeat-password" name="repeat-password" placeholder="Repeat password" required ><br><br>
-      <input type="submit" value="Register" href="userPage.jsp">
-
+      <input type="submit" value="Register">
     </form>
-<%--    <a href="registrationPage.jsp"> Register </a>--%>
     </body>
 </html>
