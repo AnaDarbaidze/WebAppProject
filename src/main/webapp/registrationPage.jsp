@@ -28,6 +28,6 @@
       <input type="submit" value="Register" href="userPage.jsp">
 
     </form>
-<%--    <a href="registrationPage.jsp"> Register </a>--%>
+    <a href="index.jsp"> Login </a>
     </body>
 </html>

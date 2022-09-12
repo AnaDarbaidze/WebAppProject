@@ -3,7 +3,7 @@
 <html>
     <head>
         <title>Log in page</title>
-<%--        <link rel="stylesheet" type="text/css" href="style.css" />--%>
+        <link rel="stylesheet" type="text/css" href="style.css" />
 <%--        class="login-form"--%>
     </head>
     <body>
