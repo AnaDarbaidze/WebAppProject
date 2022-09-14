@@ -4,7 +4,8 @@ Registration Web App on Java
 
 ## About Project
 Web application where users can register their account using personal information
-Have three main pages:
+
+### Have three main pages:
 - Log in Page
 - Registration Page
 - User Page
