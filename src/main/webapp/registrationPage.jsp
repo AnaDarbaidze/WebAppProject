@@ -100,12 +100,10 @@
                 <%}else if(request.getAttribute("status").equals("pass mismatch")){%>
             <label form="registration-form"> Passwords don't match! </label><br><br>
                 <%}}%>
-<%--      <input type="submit" value="Register" href="userPage.jsp">--%>
         <button type="submit" class="regbtn" href="userPage.jsp" value="Register" >Register</button>
     </form>
     <div class="container logIn">
         <p>Already have an account? <a href="index.jsp">Log in</a></p>
     </div>
-<%--    <a href="index.jsp"> Login </a>--%>
     </body>
 </html>

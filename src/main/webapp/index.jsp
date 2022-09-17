@@ -68,7 +68,6 @@
                 text-align: center;
             }
         </style>
-<%--        class="login-form"--%>
     </head>
     <body>
     <form action="LoginServlet">
@@ -83,14 +82,12 @@
             <label form="login-form"> Invalid username or mail </label>
             <% }else if(request.getAttribute("loginStatus").equals("incorrect pass")) { %>
             <label form="login-form"> Password incorrect </label>
-            <% }}%>
-<%--        <input type="Submit" value="Log in"><br><br>--%>
+            <% }}%>--%>
             <button type="submit" class="logbtn">Log in</button>
         </div>
         <div class="container register">
             <p>Don't have an account? <a href="registrationPage.jsp">Register</a></p>
         </div>
     </form>
-<%--    <a href="registrationPage.jsp"> Register </a>--%>
     </body>
 </html>
