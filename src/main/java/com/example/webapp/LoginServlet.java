@@ -1,10 +1,10 @@
-import com.example.webapp.HelloServlet;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+package com.example.webapp;
 
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -15,9 +15,8 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String unameOrmail = request.getParameter("username");
+        String unameOrmail = request.getParameter("email");
         String password = request.getParameter("password");
-
         UserDao userDao = new UserDao();
         try {
             User currUser = userDao.getUser(unameOrmail);
@@ -31,9 +30,10 @@ public class LoginServlet extends HttpServlet {
                 request.getRequestDispatcher("index.jsp").forward(request,response);
                 return;
             }
+            System.out.println("user exists");
             request.getSession().setAttribute("user", currUser);
             request.setAttribute("user", currUser);
-            request.getRequestDispatcher("user-page.jsp").forward(request, response);
+            request.getRequestDispatcher("userPage.jsp").forward(request, response);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

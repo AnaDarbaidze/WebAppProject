@@ -1,4 +1,4 @@
-<%--
+<%@ page import="com.example.webapp.User" %><%--
   Created by IntelliJ IDEA.
   User: PC
   Date: 9/7/2022
@@ -13,7 +13,7 @@
             <style>
                 body {
                     font-family: Arial, Helvetica, sans-serif;
-                    background-color: black;
+                    background-color: #008080;
                 }
 
                 * {
@@ -46,7 +46,7 @@
                 }
 
                 .signOut{
-                    background-color: #04AA6D;
+                    background-color: #008080;
                     color: white;
                     padding: 16px 20px;
                     margin: 8px 0;
@@ -71,23 +71,32 @@
             </style>
         </head>
         <body>
-        <form action="registrationPage-servlet" >
-            <h1>Hello <%=request.getAttribute("ragaca")%> </h1>
-            <h3>Registration Page</h3><br>
+        <form action="UserPageServlet" >
+            <h1>User Page</h1><br>
+            <h2>Hello <%=((User)request.getSession().getAttribute("user")).getUsername()%>!</h2>
             <div class="container">
-            <h1>Hello ragaca> </h1>
-            <label for="username">Enter your username or email:</label><br>
-            <input type="text" id="username" name="username" placeholder="Username/Email" required ><br><br>
+            <label for="username">Enter your username:</label><br>
+            <input type="text" id="username" name="username" placeholder="Username"  ><br><br>
+            <label for="email">Enter your email:</label><br>
+            <input type="text" id="email" name="email" placeholder="Email"  ><br><br>
             <label for="firstname">Enter your name:</label><br>
-            <input type="text" id="firstname" name="firstname" placeholder="Name" required ><br><br>
+            <input type="text" id="firstname" name="firstname" placeholder="Name"  ><br><br>
             <label for="lastname">Enter your surname:</label><br>
-            <input type="text" id="lastname" name="lastname" placeholder="Surname" required ><br><br>
+            <input type="text" id="lastname" name="lastname" placeholder="Surname"  ><br><br>
             <label for="profession">Enter your profession:</label><br>
             <input type="text" id="profession" name="profession" placeholder="Profession" ><br><br>
             <label for="password">Enter your password:</label><br>
-            <input type="password" id="password" name="password" placeholder="Password" required><br><br>
+            <input type="password" id="password" name="password" placeholder="Password" ><br><br>
             <label for="repeat-password">Please, confirm password:</label><br>
-            <input type="password" id="repeat-password" name="repeat-password" placeholder="Repeat password" required ><br><br>
+            <input type="password" id="repeat-password" name="repeat-password" placeholder="Repeat password"  ><br><br>
+                <%if(request.getAttribute("updateStatus") != null){%>
+                <% if(request.getAttribute("updateStatus").equals("uname taken")){%>
+                <label form="registration-form"> Username already taken! </label>
+                <%} else if(request.getAttribute("updateStatus").equals("mail taken")){%>
+                <label form="registration-form"> Mail already taken! </label>
+                <%}else if(request.getAttribute("updateStatus").equals("pass mismatch")){%>
+                <label form="registration-form"> passwords don't match! </label><br><br>
+                <%}}%><br><br>
             <input type="submit" value="Update">
             </div>
 

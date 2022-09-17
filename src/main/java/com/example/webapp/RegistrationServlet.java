@@ -1,14 +1,14 @@
-import jakarta.servlet.RequestDispatcher;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+package com.example.webapp;
 
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
-@WebServlet(name = "RegistrationServlet", value = "/RegistrationServlet", urlPatterns = {"/RegistrationServlet"})
+@WebServlet(name = "RegistrationServlet", value = "/RegistrationServlet")
 public class RegistrationServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse resp) throws ServletException, IOException {
@@ -26,15 +26,15 @@ public class RegistrationServlet extends HttpServlet {
             UserDao userDao = new UserDao();
             if(userDao.getUser(username) != null){
                 request.setAttribute("status", "uname taken");
-                request.getRequestDispatcher("registration.jsp").forward(request, resp);
+                request.getRequestDispatcher("registrationPage.jsp").forward(request, resp);
                 return;
             }else if(userDao.getUserByEmail(mail) != null) {
                 request.setAttribute("status", "mail taken");
-                request.getRequestDispatcher("registration.jsp").forward(request, resp);
+                request.getRequestDispatcher("registrationPage.jsp").forward(request, resp);
                 return;
             }else if(!password.equals(repeatedPassword)){
                 request.setAttribute("status", "pass mismatch");
-                request.getRequestDispatcher("registration.jsp").forward(request, resp);
+                request.getRequestDispatcher("registrationPage.jsp").forward(request, resp);
                 return;
             }
         } catch (SQLException e) {
@@ -44,10 +44,10 @@ public class RegistrationServlet extends HttpServlet {
 
         try {
             UserDao userDao = new UserDao();
-            User newUser = new User(username,firstname,lastname,password,mail,profession);
+            User newUser = new User(username,firstname,lastname,profession,password,mail);
             userDao.addUser(newUser);
             request.getSession().setAttribute("user", newUser);
-            request.getRequestDispatcher("user-page.jsp").forward(request,resp);
+            request.getRequestDispatcher("userPage.jsp").forward(request,resp);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

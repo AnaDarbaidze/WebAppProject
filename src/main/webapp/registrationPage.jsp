@@ -78,8 +78,10 @@
     <form action="RegistrationServlet" >
         <div class="container">
       <h3>Registration Page</h3><br>
-      <label for="username">Enter your username or email:</label><br>
-      <input type="text" id="username" name="username" placeholder="Username/Email" required ><br><br>
+      <label for="username">Enter your username:</label><br>
+      <input type="text" id="username" name="username" placeholder="Username" required ><br><br>
+      <label for="email">Enter your email:</label><br>
+      <input type="text" id="email" name="email" placeholder="Email" required ><br><br>
       <label for="firstname">Enter your name:</label><br>
       <input type="text" id="firstname" name="firstname" placeholder="Name" required ><br><br>
       <label for="lastname">Enter your surname:</label><br>
@@ -90,6 +92,14 @@
       <input type="password" id="password" name="password" placeholder="Password" required><br><br>
       <label for="repeat-password">Please, confirm password:</label><br>
       <input type="password" id="repeat-password" name="repeat-password" placeholder="Repeat password" required ><br><br>
+                <%if(request.getAttribute("status") != null){%>
+                    <% if(request.getAttribute("status").equals("uname taken")){%>
+            <label form="registration-form"> Username already taken! </label>
+                <%} else if(request.getAttribute("status").equals("mail taken")){%>
+            <label form="registration-form"> Mail already taken! </label>
+                <%}else if(request.getAttribute("status").equals("pass mismatch")){%>
+            <label form="registration-form"> Passwords don't match! </label><br><br>
+                <%}}%>
 <%--      <input type="submit" value="Register" href="userPage.jsp">--%>
         <button type="submit" class="regbtn" href="userPage.jsp" value="Register" >Register</button>
     </form>

@@ -71,13 +71,19 @@
 <%--        class="login-form"--%>
     </head>
     <body>
-    <form action="/LoginServlet">
+    <form action="LoginServlet">
         <div class="container">
         <h1>Login</h1>
         <label for="email">Enter your username or email:</label><br>
         <input type="text" id="email" name="email" required><br><br>
         <label for="password">Enter your password:</label><br>
         <input type="password" id="password" name="password" required><br><br>
+            <% if (request.getAttribute("loginStatus") != null){ %>
+            <%  if (request.getAttribute("loginStatus").equals("wrong uname")) {%>
+            <label form="login-form"> Invalid username or mail </label>
+            <% }else if(request.getAttribute("loginStatus").equals("incorrect pass")) { %>
+            <label form="login-form"> Password incorrect </label>
+            <% }}%>
 <%--        <input type="Submit" value="Log in"><br><br>--%>
             <button type="submit" class="logbtn">Log in</button>
         </div>

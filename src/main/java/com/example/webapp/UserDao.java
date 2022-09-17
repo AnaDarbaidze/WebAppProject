@@ -1,3 +1,5 @@
+package com.example.webapp;
+
 import java.sql.*;
 
 public class UserDao {
@@ -5,10 +7,10 @@ public class UserDao {
             "(username, firstname , lastname, profession, email, password)" +
             " VALUES (?,?,?,?,?,?)";
 
-    private static final String SELECT_USER_BY_USERNAME = "SELECT * FROM users " +
+    private static final String SELECT_USER_BY_USERNAME = "SELECT * FROM users u " +
             "WHERE username = ?";
 
-    private static final String SELECT_USER_BY_EMAIL = "SELECT * FROM users " +
+    private static final String SELECT_USER_BY_EMAIL = "SELECT * FROM users u " +
             "WHERE email = ?";
 
     private static final String UPDATE_USER_DATA = "update users " +
@@ -18,10 +20,13 @@ public class UserDao {
     private Connection connection;
     public UserDao(){
         try {
+            Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/db",
                     "root", "1583");
         } catch (SQLException e) {
             e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
     }
     public void closeConnection() {
@@ -81,7 +86,7 @@ public class UserDao {
         statement.setString(4, user.getProfession());
         statement.setString(5, user.getPassword());
         statement.setString(6, user.getEmail());
-
+        statement.setInt(7, user.getId());
         statement.executeUpdate();
 
     }
